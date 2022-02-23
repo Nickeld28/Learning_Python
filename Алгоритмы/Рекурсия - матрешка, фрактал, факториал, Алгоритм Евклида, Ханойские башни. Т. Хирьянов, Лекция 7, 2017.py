@@ -1,40 +1,39 @@
 """
 Рекурсия
 """
+import graphics as gr
 
 
-def matryoshka(n):
-    if n == 1:  # важно определить сразу крайний случай рекурсии
+def matryoshka(c):
+    if c == 1:  # важно определить сразу крайний случай рекурсии
         print("Матрешечка")
     else:
-        print("Верх матрешки n =", n)
-        matryoshka(n - 1)
-        print("Низ матрешки n =", n)
+        print("Верх матрешки n =", c)
+        matryoshka(c - 1)
+        print("Низ матрешки n =", c)
 
-
-import graphics as gr
 
 window = gr.GraphWin("Testing graphics", 600, 600)
 alpha = 0.1
 
 
-def fractal_rectangle(A, B, C, D, deep=10):
+def fractal_rectangle(a, b, c, d, deep=10):
     if deep < 1:
         return
-    for M, N in (A, B), (B, C), (C, D), (D, A):
+    for M, N in (a, b), (b, c), (c, d), (d, a):
         gr.Line(gr.Point(*M), gr.Point(*N)).draw(window)
-    A1 = (A[0] * (1 - alpha) + B[0] * alpha, A[1] * (1 - alpha) + B[1] * alpha)
-    B1 = (B[0] * (1 - alpha) + C[0] * alpha, B[1] * (1 - alpha) + C[1] * alpha)
-    C1 = (C[0] * (1 - alpha) + D[0] * alpha, C[1] * (1 - alpha) + D[1] * alpha)
-    D1 = (D[0] * (1 - alpha) + A[0] * alpha, D[1] * (1 - alpha) + A[1] * alpha)
-    fractal_rectangle(A1, B1, C1, D1, deep - 1)
+    a1 = (a[0] * (1 - alpha) + b[0] * alpha, a[1] * (1 - alpha) + b[1] * alpha)
+    b1 = (b[0] * (1 - alpha) + c[0] * alpha, b[1] * (1 - alpha) + c[1] * alpha)
+    c1 = (c[0] * (1 - alpha) + d[0] * alpha, c[1] * (1 - alpha) + d[1] * alpha)
+    d1 = (d[0] * (1 - alpha) + a[0] * alpha, d[1] * (1 - alpha) + a[1] * alpha)
+    fractal_rectangle(a1, b1, c1, d1, deep - 1)
 
 
-def factorial(n: int):
-    assert n >= 0, "Факториал отрицательного числа не определен в этой функции"
-    if n == 0:
+def factorial(number: int):
+    assert number >= 0, "Факториал отрицательного числа не определен в этой функции"
+    if number == 0:
         return 1
-    return factorial(n - 1) * n
+    return factorial(number - 1) * number
 
 
 """
@@ -51,9 +50,9 @@ def gcd_1(a, b):
     if a == b:
         return a
     elif a > b:
-        return gcd(a - b, b)
+        return gcd_1(a - b, b)
     else:  # a < b
-        return gcd(a, b - a)
+        return gcd_1(a, b - a)
 
 
 def gcd_2(a, b):
@@ -61,11 +60,11 @@ def gcd_2(a, b):
     if b == 0:
         return a
     else:
-        return gcd(b, a % b)
+        return gcd_2(b, a % b)
 
 
 def gcd_3(a, b):
-    return (a if b == 0 else gcd(b, a % b))
+    return a if b == 0 else gcd_3(b, a % b)
 
 
 """
@@ -75,21 +74,21 @@ def gcd_3(a, b):
 """
 
 
-def pow_simple(a: float, n: int):
+def pow_simple(a: float, x: int):
     """Простейший алгоритм возведения в степень с рекурсией"""
-    if n == 0:
+    if x == 0:
         return 1
-    return pow_simple(a, n - 1) * a
+    return pow_simple(a, x - 1) * a
 
 
-def pow(a: float, n: int):
+def power(k: float, m: int):
     """Функция быстрого возведения числа a в степень n"""
-    if n == 0:
+    if m == 0:
         return 1
-    elif n % 2 == 1:  # нечетная степень
-        return pow(a, n - 1) * a
+    elif m % 2 == 1:  # нечетная степень
+        return power(k, m - 1) * k
     else:  # четная степень
-        return pow(a ** 2, n // 2)
+        return power(k ** 2, m // 2)
 
 
 """
@@ -97,14 +96,27 @@ def pow(a: float, n: int):
 """
 
 
-def towers_of_hanoy(n, pin1, pin2):
+def towers_of_hanoy(num, pin1, pin2):
     """Функиия для решения задачи Ханойские башни"""
-    if n == 1:
+    if num == 1:
         print(f'Переложить диск 1 со стержня {pin1} на {pin2}')
     else:
-        towers_of_hanoy(n - 1, pin1, 6 - pin1 - pin2)
-        print(f'Переложить диск {n} со стержня {pin1} на {pin2}')
-        towers_of_hanoy(n - 1, 6 - pin1 - pin2, pin2)
+        towers_of_hanoy(num - 1, pin1, 6 - pin1 - pin2)
+        print(f'Переложить диск {num} со стержня {pin1} на {pin2}')
+        towers_of_hanoy(num - 1, 6 - pin1 - pin2, pin2)
+
+
+# еще вариант реализации алгоритма Ханойские башни:
+def hanoi(height, start=1, target=3, helper=2):
+    """Функиия для решения задачи Ханойские башни"""
+
+    def move(fp, tp):
+        print('{} - {}'.format(fp, tp))
+
+    if height >= 1:
+        hanoi(height - 1, start, helper, target)
+        move(start, target)
+        hanoi(height - 1, helper, target, start)
 
 
 """ Тестирование """
@@ -116,6 +128,7 @@ if __name__ == "__main__":
     window.close()
 
     print(factorial(18))
-    print(pow(999, 100))
+    print(power(99, 10))
     n = int(input('Введите количество дисков:\n'))
     towers_of_hanoy(n, 1, 2)
+    hanoi(n, 1, 3)

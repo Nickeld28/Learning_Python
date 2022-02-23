@@ -16,9 +16,9 @@ print(lst)               # [5, 4]
 """
 
 
-def modify_list(_list):
-    for elem in _list[::-1]:
+def modify_list(lst):
+    for elem in lst[::-1]:
         if elem % 2 != 0:
-            _list.remove(elem)
+            lst.remove(elem)
         else:
-            _list[_list.index(elem)] = _list[_list.index(elem)] // 2
+            lst[lst.index(elem)] = lst[lst.index(elem)] // 2

@@ -15,20 +15,21 @@ Sample Output:
 
 
 n = int(input())
-_list = [[0 for i in range(n)] for j in range(n)]
+lst = [[0 for i in range(n)] for j in range(n)]
 for i in range(n):
     for j in range(i, n - i):
-        _list[i][j] = _list[i][j - 1] + 1
+        lst[i][j] = lst[i][j - 1] + 1
     for j in range(i + 1, n - i):
-        _list[j][n - 1 - i] = _list[j - 1][n - 1 - i] + 1
+        lst[j][n - 1 - i] = lst[j - 1][n - 1 - i] + 1
     for j in range(n - 2 - i, i - 1, -1):
-        _list[n - 1 - i][j] = _list[n - 1 - i][j + 1] + 1
+        lst[n - 1 - i][j] = lst[n - 1 - i][j + 1] + 1
     for j in range(n - 2 - i, i, -1):
-        _list[j][i] = _list[j + 1][i] + 1
-for number in _list:
+        lst[j][i] = lst[j + 1][i] + 1
+for number in lst:
     print(' '.join(map(str, number)))
 
-#Program Executed in  4.5366242
+# Program Executed in  4.5366242
+
 """
 x,y,dx,dy, m = 0,0,0,1, [[0]*n for i in range(n)]
 for i in range(n*n):
