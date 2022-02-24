@@ -47,33 +47,39 @@ class Car:
         else:
             print("You can't roll back an odometer!")
 
+    def fill_gas_tank(self):
+        """ Осуществляет заправку автомобиля бензином """
+        print(f"{self.manufacturer}: Заливаем полный бензобак!")
 
-my_new_car = Car('Audi', 'a4', 2019)
-print(my_new_car.get_descriptive_name())
-my_new_car.read_odometer()
 
-# Рассмотрим три способа изменения значения атрибутов
+if __name__ == '__main__':
+    my_new_car = Car('Audi', 'a4', 2019)
+    print(my_new_car.get_descriptive_name())
+    my_new_car.read_odometer()
 
-# 1) - Прямое изменение значения атрибута через экземпляр
-my_new_car.odometer_reading = 23  # иногда такие изменения допустимы, но чаще используются вспомогательные методы
-my_new_car.read_odometer()
+    # Рассмотрим три способа изменения значения атрибутов
 
-# 2) - Изменение значения атрибута с использованием метода update_odometer()
-my_new_car.update_odometer(30)
-my_new_car.read_odometer()
+    # 1) - Прямое изменение значения атрибута через экземпляр
+    my_new_car.odometer_reading = 23  # иногда такие изменения допустимы, но чаще используются вспомогательные методы
+    my_new_car.read_odometer()
 
-my_new_car.new_update_odometer(35)
-my_new_car.read_odometer()
-my_new_car.new_update_odometer(25)  # пресеклась попытка уменьшить счетчик!
-my_new_car.read_odometer()
+    # 2) - Изменение значения атрибута с использованием метода update_odometer()
+    my_new_car.update_odometer(30)
+    my_new_car.read_odometer()
 
-# 3) - Изменение значения атрибута с приращением с помощью метода increment_odometer()
-my_new_car.increment_odometer(10)
-my_new_car.read_odometer()
+    my_new_car.new_update_odometer(35)
+    my_new_car.read_odometer()
+    my_new_car.new_update_odometer(25)  # пресеклась попытка уменьшить счетчик!
+    my_new_car.read_odometer()
 
-my_used_car = Car("Subaru", "outback", 2015)
-print(my_used_car.get_descriptive_name())
-my_used_car.new_update_odometer(23_500)
-my_used_car.read_odometer()
-my_used_car.increment_odometer(100)
-my_used_car.read_odometer()
+    # 3) - Изменение значения атрибута с приращением с помощью метода increment_odometer()
+    my_new_car.increment_odometer(10)
+    my_new_car.read_odometer()
+
+    my_used_car = Car("Subaru", "Outback", 2015)
+    print(my_used_car.get_descriptive_name())
+    my_used_car.new_update_odometer(23_500)
+    my_used_car.read_odometer()
+    my_used_car.increment_odometer(100)
+    my_used_car.read_odometer()
+    my_used_car.fill_gas_tank()

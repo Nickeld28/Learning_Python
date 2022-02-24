@@ -30,24 +30,22 @@ class Dog:
         print(f"{self.name} rolled over!")
 
 
-# Создание экземпляра класса Dog
-my_dog = Dog('Willie', 6)
+if __name__ == '__main__':
+    # Создание экземпляра класса Dog
+    my_dog = Dog('Willie', 6)
 
-# Создание еще одного экземпляра класса Dog
-your_dog = Dog('Lucy', 3)
+    # Создание еще одного экземпляра класса Dog
+    your_dog = Dog('Lucy', 3)
 
-# Для обращения к атрибутам экземпляра используется "точечная" запись
-print(f"My dog's name is {my_dog.name}.")
-print(f"My dog is {my_dog.age} years old.")
+    # Для обращения к атрибутам экземпляра используется "точечная" запись
+    print(f"My dog's name is {my_dog.name}.")
+    print(f"My dog is {my_dog.age} years old.")
 
-print(f"Your dog's name is {your_dog.name}.")
-print(f"Your dog is {your_dog.age} years old.")
+    print(f"Your dog's name is {your_dog.name}.")
+    print(f"Your dog is {your_dog.age} years old.")
 
-# Для обращения к методам класса также используется "точечная" запись и круглые скобки, т.к. метод -  это функция
-my_dog.sit()
-my_dog.roll_over()
-your_dog.sit()
-your_dog.roll_over()
-
-
-
+    # Для обращения к методам класса также используется "точечная" запись и круглые скобки, т.к. метод -  это функция
+    my_dog.sit()
+    my_dog.roll_over()
+    your_dog.sit()
+    your_dog.roll_over()
