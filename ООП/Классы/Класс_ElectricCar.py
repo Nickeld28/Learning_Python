@@ -44,14 +44,3 @@ class ElectricCar(Car):  # В определении потомка имя кл�
     def fill_gas_tank(self):  # Переопределение метода класса-родителя
         """ У электромобилей нет бензобака """
         print(f"{self.manufacturer}: Этой машине не нужен бензин!")
-
-
-if __name__ == '__main__':
-    my_tesla = ElectricCar('Tesla', 'Model S', 2019)
-    print(my_tesla.get_descriptive_name())
-    my_tesla.battery.describe_battery()
-    my_tesla.fill_gas_tank()
-    my_tesla.battery.charge_battery()
-    print(my_tesla.battery.range_miles)
-    my_tesla.battery.get_range()
-    print(my_tesla.battery.range_miles)

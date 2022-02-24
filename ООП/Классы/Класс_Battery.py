@@ -1,3 +1,6 @@
+""" Класс представления батареи """
+
+
 class Battery:
     """ Простая модель аккумулятора для электромобиля """
 
@@ -21,3 +24,9 @@ class Battery:
         elif self.battery_size == 100:
             self.range_miles = 315
         print(f"This car can go about {self.range_miles} miles on a full charge.")
+
+    def upgrade_battery(self):
+        """ Увеличение мощности батареи """
+        if self.battery_size < 100:
+            self.battery_size = 100
+            print(f"Upgraded successfully! The battery size now is:", self.battery_size)
